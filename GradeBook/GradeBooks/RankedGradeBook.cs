@@ -7,6 +7,8 @@ namespace GradeBook.GradeBooks
 {
     public class RankedGradeBook : BaseGradeBook
     {
+        private const string Message = "Ranked grading requires at least 5 students.";
+
         public RankedGradeBook(string name) : base(name)
         {
             Type = GradeBookType.Ranked;
@@ -14,7 +16,8 @@ namespace GradeBook.GradeBooks
         public override char GetLetterGrade(double averageGrade)
         {
             if (Students.Count < 5)
-                throw new InvalidOperationException("Need at least 5 students");
+                throw new InvalidOperationException(Message);
+
             var threshold = (int)Math.Ceiling(Students.Count * 0.2);
             var grades = Students.OrderByDescending(e=>e.AverageGrade).Select(e=>e.AverageGrade).ToList();
 
