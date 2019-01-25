@@ -9,7 +9,7 @@ namespace GradeBook.GradeBooks
     {
         private const string Message = "Ranked grading requires at least 5 students.";
 
-        public RankedGradeBook(string name) : base(name)
+        public RankedGradeBook(string name, bool isWeighted) : base(name,isWeighted)
         {
             Type = GradeBookType.Ranked;
         }
